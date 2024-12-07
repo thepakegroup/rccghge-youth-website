@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/base-components/button";
 import { navLinks, navLinksProps } from "@/components/navbar/nav-links";
-import { MotionPresence } from "../framer-motions/motion-exports";
+import { Mpresence } from "../framer-motions/motion-exports";
 import { useState } from "react";
 import { Hamburger } from "@/icons/hamburger";
 import { CloseIcon } from "@/icons/close-icon";
@@ -14,7 +14,7 @@ export const Navbar = () => {
   const [showNav, setShowNav] = useState<boolean>(false);
   //
   return (
-    <nav className="sticky top-0 z-[9999] bg-light-100">
+    <nav className="sticky top-0 z-[9999] bg-light-100 py-3">
       <div className="flex items-center justify-between side-space">
         <Link to="/" className="inline-block">
           <img src="/logo.svg" className="w-16 md:w-24" />
@@ -56,19 +56,19 @@ export const Navbar = () => {
         {/*  */}
         {
           <div className="md:hidden block">
-            <MotionPresence>
+            <Mpresence>
               {!showNav ? (
                 <Hamburger onClick={() => setShowNav(true)} />
               ) : (
                 <CloseIcon onClick={() => setShowNav(false)} />
               )}
-            </MotionPresence>
+            </Mpresence>
           </div>
         }
         {
-          <MotionPresence>
+          <Mpresence>
             {showNav && <MobileNav setShowNav={setShowNav} />}
-          </MotionPresence>
+          </Mpresence>
         }
       </div>
     </nav>

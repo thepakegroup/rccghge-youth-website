@@ -1,7 +1,4 @@
-import {
-  MotionDiv,
-  MotionPresence,
-} from "@/components/framer-motions/motion-exports";
+import { Mdiv, Mpresence } from "@/components/framer-motions/motion-exports";
 import { SearchIcon } from "@/icons/search-icon";
 import { SmallChevronDown } from "@/icons/small-chevron-down";
 import api from "@/utils/axios-interceptor";
@@ -84,9 +81,9 @@ const Events = () => {
             <span>{filter}</span>
             <SmallChevronDown />
           </div>
-          <MotionPresence>
+          <Mpresence>
             {showFilter && (
-              <MotionDiv
+              <Mdiv
                 initial={{ height: 0 }}
                 animate={{ height: "auto" }}
                 exit={{ height: 0 }}
@@ -119,9 +116,9 @@ const Events = () => {
                 >
                   Previous
                 </p>
-              </MotionDiv>
+              </Mdiv>
             )}
-          </MotionPresence>
+          </Mpresence>
         </div>
         {/* search input */}
         <div className="w-[250px] flex justify-between items-center gap-1 border px-2">

@@ -12,6 +12,9 @@
       "@/components/*": ["./src/components/*"]
     },
 
+    //
+    "typeRoots": ["node_modules/@types"],
+
     /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,

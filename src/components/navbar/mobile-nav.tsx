@@ -1,4 +1,4 @@
-import { MotionDiv } from "@/components/framer-motions/motion-exports";
+import { Mdiv } from "@/components/framer-motions/motion-exports";
 import { navLinks, navLinksProps } from "./nav-links";
 import { Link, useLocation } from "react-router-dom";
 import { Dispatch, SetStateAction } from "react";
@@ -13,7 +13,7 @@ export const MobileNav = ({
   const isHome = pathname === "/";
   //
   return (
-    <MotionDiv
+    <Mdiv
       initial={{ height: 0 }}
       animate={{ height: "auto" }}
       exit={{ height: 0 }}
@@ -47,6 +47,6 @@ export const MobileNav = ({
           </Link>
         );
       })}
-    </MotionDiv>
+    </Mdiv>
   );
 };

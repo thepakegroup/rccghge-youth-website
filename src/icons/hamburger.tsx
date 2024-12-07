@@ -1,4 +1,4 @@
-import { MotionSvg } from "@/components/framer-motions/motion-exports";
+import { Msvg } from "@/components/framer-motions/motion-exports";
 
 export const Hamburger = ({
   className,
@@ -8,7 +8,7 @@ export const Hamburger = ({
   onClick?: () => void | Promise<void>;
 }) => {
   return (
-    <MotionSvg
+    <Msvg
       xmlns="http://www.w3.org/2000/svg"
       width="32"
       height="32"
@@ -23,6 +23,6 @@ export const Hamburger = ({
         fill="currentColor"
         d="M3 8h18a1 1 0 0 0 0-2H3a1 1 0 0 0 0 2m18 8H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2m0-5H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2"
       />
-    </MotionSvg>
+    </Msvg>
   );
 };

@@ -5,7 +5,7 @@ import { ErrorModal, SuccessModal } from "@/utils/request-modals";
 import api from "@/utils/axios-interceptor";
 import { Loader1 } from "../base-components/loader1";
 
-export const Cta5 = () => {
+export const ContactUsForm = () => {
   const [sending, setSending] = useState<boolean>(false);
   //
   const {
@@ -39,7 +39,7 @@ export const Cta5 = () => {
   return (
     <div
       id="contact-us"
-      className="relative mt-12 mb-20 min-h-[736px] bg-cta5bg bg-cover bg-no-repeat"
+      className="relative mt-12 mb-20 min-h-[736px] bg-contact-bg bg-fixed bg-cover bg-no-repeat"
     >
       <form
         className="absolute w-[89%] sm:w-[600px] mx-auto top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-5 bg-light-100 rounded-lg"

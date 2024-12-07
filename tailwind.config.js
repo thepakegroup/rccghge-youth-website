@@ -63,8 +63,8 @@ export default {
         quicksand: ["Quicksand", "sans-serif"],
       },
       backgroundImage: {
-        cta5bg:
-          "linear-gradient(to right,rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(/cta5bg.svg)",
+        "contact-bg":
+          "linear-gradient(to right,rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(/contact-us-img-bg.png)",
       },
     },
   },

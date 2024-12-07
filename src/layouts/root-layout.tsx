@@ -12,7 +12,7 @@ const RootLayout = () => {
     if (restrictedRoutes.includes(pathname) && !token) {
       window.location.href = "/auth/sign-in";
     } else if (authRoutes.includes(pathname) && token) {
-      window.location.href = "/hge-men";
+      window.location.href = "/";
     }
   }, [pathname]);
   return (
