@@ -58,6 +58,20 @@ export const HeroSection = () => {
             />
           </div>
         </SwiperSlide>
+        {/*  */}
+        <SwiperSlide>
+          <div className={`relative w-full h-full bg-light-200`}>
+            <div
+              className="absolute top-0 left-0 right-0 bottom-0 
+            bg-[linear-gradient(rgba(0,0,0,0.46),rgba(0,0,0,0.46))]"
+            />
+            <img
+              className="h-full w-full object-cover"
+              src={"/contact-us-img-bg.png"}
+              alt="hero image"
+            />
+          </div>
+        </SwiperSlide>
 
         <HeroRightArrow />
       </Swiper>
