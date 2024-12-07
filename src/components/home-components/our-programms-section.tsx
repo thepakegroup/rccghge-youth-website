@@ -1,11 +1,10 @@
+import { TopIntro } from "../base-components/top-intro";
+
 export const OurProgrammsSection = () => {
   return (
     <div className="bg-[#FFFAF5] py-8 md:py-12 mb-12">
       <div className="side-space">
-        <div className="flex flex-col gap-2 mb-6">
-          <div className="h-[6px] w-[76px] bg-primary-100" />
-          <h3 className="text-dark-100/80 header-three">Our Programmes</h3>
-        </div>
+        <TopIntro text="Our Programmes" />
         {/* boxes here */}
         {/* Box 1 */}
         <div
@@ -46,10 +45,10 @@ export const OurProgrammsSection = () => {
         </div>
         {/* Box 2 */}
         <div
-          className="grid grid-cols-1 lg:grid-cols-2 gap-x-10 gap-y-10 md:gap-x-14"
+          className="grid grid-cols-1 lg:grid-cols-2 items-center gap-x-10 gap-y-10 md:gap-x-14"
           // className="flex"
         >
-          <div className="flex flex-col gap-5 order-1 lg:order-2">
+          <div className="flex flex-col gap-5 order-1 lg:order-1">
             <div>
               <h2 className="font-semibold text-lg font-playfair-display sm:text-xl md:text-2xl text-dark-100/85 text-center lg:text-left">
                 Scripture Unplugged
@@ -72,7 +71,7 @@ export const OurProgrammsSection = () => {
             </ul>
           </div>
           {/*  */}
-          <div className="h-full w-full order-2 lg:order-1">
+          <div className="h-full w-full order-2 lg:order-2">
             <img
               src="/program2.png"
               className="object-cover object-center rounded-md"

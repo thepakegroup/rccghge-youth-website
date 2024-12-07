@@ -59,12 +59,12 @@ const impacts: impactProp[] = [
     desc: "To prepare families and individuals, for the second coming of our Lord and Savior Jesus Christ.",
   },
   {
-    id: 1,
+    id: 2,
     title: "Our Vision",
     desc: "To prepare families and individuals, for the second coming of our Lord and Savior Jesus Christ.",
   },
   {
-    id: 1,
+    id: 3,
     title: "Our Mission",
     desc: "- IMPACT Service at 10am (Every Last Sunday of the month) - Scripture UNPLUGGED at 7pm (Every First & Third Tuesday of the month) - Prayers every Thursday from 9 - 9:30pm <span style='color:#1B4E8D;'>(Prayer line (717)-275-8941 Access Code: 8329883)</span>",
   },
