@@ -15,7 +15,7 @@ export const Cta2Section = () => {
   };
   //
   return (
-    <div className="bg-[#FFFAF5] py-8 md:py-12 mb-12">
+    <div className="bg-[#FFFAF5] py-8 md:py-12 mb-12 overflow-x-hidden">
       <div className="side-space">
         <Mh3
           initial={{ opacity: 0, y: 20 }}
