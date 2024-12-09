@@ -1,4 +1,8 @@
-import { Mdiv, Mpresence } from "@/components/framer-motions/motion-exports";
+import {
+  Mdiv,
+  MLink,
+  Mpresence,
+} from "@/components/framer-motions/motion-exports";
 import { SearchIcon } from "@/icons/search-icon";
 import { SmallChevronDown } from "@/icons/small-chevron-down";
 import api from "@/utils/axios-interceptor";
@@ -7,7 +11,7 @@ import { useQuery } from "@tanstack/react-query";
 import { formatDate } from "date-fns";
 import { useMemo, useState } from "react";
 import ReactPaginate from "react-paginate";
-import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 
 const Events = () => {
@@ -60,12 +64,26 @@ const Events = () => {
     }
     return events?.data;
   }, [searchInput, events?.data, filter]);
-
+  //
+  const var1 = {
+    hidden: {
+      opacity: 0,
+      x: -25,
+    },
+    visible: (index: number) => ({
+      opacity: 1,
+      x: 0,
+      transition: {
+        delay: 0.25 * index,
+        ease: "easeInOut",
+      },
+    }),
+  };
   //
   return (
-    <div className="w-[90%] mx-auto mt-6 mb-20">
+    <div className="mt-6 mb-20 overflow-x-hidden">
       <h1 className="header-one !text-dark-100 text-center">Events</h1>
-      <div className="relative mx-auto bg-[linear-gradient(to_right,#12234E,#4473BA)] h-[3px] mt-4">
+      <div className="w-[90%] relative mx-auto bg-[linear-gradient(to_right,#12234E,#4473BA)] h-[3px] mt-4">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120px] bg-light-100 px-4 py-2">
           <img className="w-full" src="/logo.svg" alt="" />
         </div>
@@ -163,7 +181,12 @@ const Events = () => {
               `${import.meta.env.VITE_BASE_URL}`
             );
             return (
-              <Link
+              <MLink
+                initial="hidden"
+                whileInView="visible"
+                custom={index}
+                variants={var1}
+                viewport={{ once: true, margin: "0px 0px -200px 0px" }}
                 to={`/events/${item?.id}`}
                 key={index}
                 className="w-full 376:w-[300px] 576:w-full flex flex-col gap-1"
@@ -200,7 +223,7 @@ const Events = () => {
                     </h4>
                   </div>
                 </div>
-              </Link>
+              </MLink>
             );
           })}
       </div>

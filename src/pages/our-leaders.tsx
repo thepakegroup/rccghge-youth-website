@@ -2,6 +2,7 @@ import {
   IconHolder,
   IconHolder2,
 } from "@/components/base-components/icon-holder";
+import { Mdiv } from "@/components/framer-motions/motion-exports";
 import { Instagram } from "@/icons/instagram";
 import { Twitter } from "@/icons/twitter";
 import api from "@/utils/axios-interceptor";
@@ -19,11 +20,25 @@ const OurLeaders = () => {
     select: (data) => data,
   });
   //
+  const var1 = {
+    hidden: {
+      opacity: 0,
+      x: -25,
+    },
+    visible: (index: number) => ({
+      opacity: 1,
+      x: 0,
+      transition: {
+        delay: 0.3 * index,
+        ease: "easeInOut",
+      },
+    }),
+  };
   //
   return (
-    <div className="w-[90%] mx-auto mt-6">
+    <div className="mt-6 overflow-x-hidden">
       <h1 className="header-one !text-dark-100 text-center">Our Leaders</h1>
-      <div className="relative mx-auto bg-[linear-gradient(to_right,#12234E,#4473BA)] h-[3px] mt-4">
+      <div className="w-[90%] relative mx-auto bg-[linear-gradient(to_right,#12234E,#4473BA)] h-[3px] mt-4">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120px] bg-light-100 px-4 py-2">
           <img className="w-full" src="/logo.svg" alt="" />
         </div>
@@ -50,13 +65,18 @@ const OurLeaders = () => {
             );
           })}
         {leaders &&
-          leaders?.data.map((item: any) => {
+          leaders?.data.map((item: any, index: number) => {
             return (
-              <div
+              <Mdiv
+                initial="hidden"
+                whileInView="visible"
+                custom={index}
+                variants={var1}
+                viewport={{ once: true, margin: "0px 0px -200px 0px" }}
                 key={item?.id}
-                className="w-full 376:w-[300px] 480:w-full mx-auto 480:mx-0 flex flex-col gap-3"
+                className="flex 376:w-[350px] mx-auto 480:w-fit flex-col gap-3"
               >
-                <div className="w-full h-full 576:h-full overflow-hidden">
+                <div className="w-full h-full overflow-hidden">
                   <img
                     className="w-full h-full bg-light-200 object-cover"
                     src={item?.image}
@@ -92,7 +112,7 @@ const OurLeaders = () => {
                     )}
                   </div>
                 </div>
-              </div>
+              </Mdiv>
             );
           })}
         {/*  */}

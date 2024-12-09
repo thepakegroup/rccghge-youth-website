@@ -1,7 +1,7 @@
+import { MLink } from "@/components/framer-motions/motion-exports";
 import { WhiteRightArrow } from "@/icons/white-right-arrow";
 import api from "@/utils/axios-interceptor";
 import { useQuery } from "@tanstack/react-query";
-import { Link } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 const Galleria = () => {
   // const [filter, setFilter] = useState<string>("All events");
@@ -16,8 +16,23 @@ const Galleria = () => {
     staleTime: 2500,
   });
   //
+  const var1 = {
+    hidden: {
+      opacity: 0,
+      x: -25,
+    },
+    visible: (index: number) => ({
+      opacity: 1,
+      x: 0,
+      transition: {
+        delay: 0.25 * index,
+        ease: "easeOut",
+      },
+    }),
+  };
+  //
   return (
-    <div className="mt-6">
+    <div className="mt-6 overflow-x-hidden">
       <h1 className="header-one !text-dark-100 text-center">
         Our Events Gallery
       </h1>
@@ -65,8 +80,13 @@ const Galleria = () => {
             />
           ))}
         {galleries &&
-          galleries?.map((item: any) => (
-            <Link
+          galleries?.map((item: any, index: number) => (
+            <MLink
+              initial="hidden"
+              whileInView="visible"
+              custom={index}
+              variants={var1}
+              viewport={{ once: true, margin: "0px 0px -200px 0px" }}
               to={`/galleria/${item?.id}`}
               key={item?.id}
               className="event-gallery-card w-full 376:w-[350px] 476:w-full mx-auto 476:mx-0 cursor-pointer overflow-hidden relative bg-dark-100/40 backdrop-blur-sm rounded-md"
@@ -83,7 +103,7 @@ const Galleria = () => {
                 </h3>
                 <WhiteRightArrow />
               </div>
-            </Link>
+            </MLink>
           ))}
         {/*  */}
         {/*  */}
