@@ -8,7 +8,7 @@ export const OurProgrammsSection = () => {
         {/* boxes here */}
         {/* Box 1 */}
         <div
-          className="grid grid-cols-1 lg:grid-cols-2 gap-x-10 gap-y-10 md:gap-x-14 mb-16"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-x-10 gap-y-10 md:gap-x-12 mb-16"
           // className="flex"
         >
           <div className="h-full w-full order-2 lg:order-1">
@@ -22,7 +22,7 @@ export const OurProgrammsSection = () => {
             <h2 className="font-semibold text-lg font-playfair-display sm:text-xl md:text-2xl text-dark-100/85 text-center lg:text-left">
               The IMPACT Academy
             </h2>
-            <ul className="list-disc ml-5 font-medium text-grey-100 font-quicksand text-base sm:text-lg min-[1120px]:text-xl text-center lg:text-left tracking-wider flex flex-col gap-2 lg:gap-0">
+            <ul className="list-disc ml-5 font-normal text-dark-100/75 font-quicksand text-sm sm:text-base min-[1120px]:text-lg text-center lg:text-left tracking-wider flex flex-col gap-3 lg:gap-2">
               <li>The Impact academy will build your spiritual muscle,</li>
               <li>
                 You will gain tangible insights discovering who YOU are & what
@@ -45,7 +45,7 @@ export const OurProgrammsSection = () => {
         </div>
         {/* Box 2 */}
         <div
-          className="grid grid-cols-1 lg:grid-cols-2 items-center gap-x-10 gap-y-10 md:gap-x-14"
+          className="grid grid-cols-1 lg:grid-cols-2 items-center gap-x-10 gap-y-10 md:gap-x-12"
           // className="flex"
         >
           <div className="flex flex-col gap-5 order-1 lg:order-1">
@@ -59,7 +59,7 @@ export const OurProgrammsSection = () => {
                 truth.
               </p>
             </div>
-            <ul className="list-disc ml-5 font-medium text-grey-100 font-quicksand text-base sm:text-lg min-[1120px]:text-xl text-center lg:text-left tracking-wider flex flex-col gap-2 lg:gap-0">
+            <ul className="list-disc ml-5 font-normal text-dark-100/75 font-quicksand text-base sm:text-lg min-[1120px]:text-xl text-center lg:text-left tracking-wider flex flex-col gap-2 lg:gap-2">
               <li>
                 It will provide us an opportunity to ask questions as it relates
                 to our everyday living and grow in our spiritual lives.
