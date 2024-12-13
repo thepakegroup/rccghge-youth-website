@@ -9,7 +9,7 @@ const Galleria = () => {
   const { data: galleries, isLoading: loadingGalleries } = useQuery({
     queryKey: ["galleries"],
     queryFn: async () => {
-      const res = await api.get(`/folder/list`);
+      const res = await api.get(`/folder/list?ctx=rccghge-youth`);
       return res.data;
     },
     select: (data) => data.data,

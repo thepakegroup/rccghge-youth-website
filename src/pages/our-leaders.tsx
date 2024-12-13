@@ -14,7 +14,7 @@ const OurLeaders = () => {
   const { data: leaders, isLoading: loadingLeaders } = useQuery({
     queryKey: ["leaders"],
     queryFn: async () => {
-      const res = await api.get("/leader/all");
+      const res = await api.get("/leader/all?ctx=rccghge-youth");
       return res.data.data;
     },
     select: (data) => data,

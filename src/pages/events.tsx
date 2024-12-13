@@ -30,7 +30,7 @@ const Events = () => {
     queryKey: ["events", page, perPage, search],
     queryFn: async () => {
       const res = await api.get(
-        `/event/all?page=${page}&perPage=${perPage}&search=${search}`
+        `/event/all?page=${page}&perPage=${perPage}&search=${search}&ctx=rccghge-youth`
       );
       return res.data.data;
     },

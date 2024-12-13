@@ -8,7 +8,7 @@ const EventDetails = () => {
   const { data: event, isLoading: loadingEvent } = useQuery({
     queryKey: ["event", id],
     queryFn: async () => {
-      const res = await api.get(`event/all?id=${id}`);
+      const res = await api.get(`event/all?id=${id}&ctx=rccghge-youth`);
       return res.data.data;
     },
     select: (data) => data.data[0],

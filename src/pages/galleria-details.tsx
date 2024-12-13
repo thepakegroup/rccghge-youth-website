@@ -19,7 +19,7 @@ const GalleriaDetails = () => {
     queryKey: ["galleryItems", id, page],
     queryFn: async () => {
       const res = await api.get(
-        `/gallery/items?page=${page}&perPage=${perPage}&folder_id=${id}`
+        `/gallery/items?page=${page}&perPage=${perPage}&folder_id=${id}&ctx=rccghge-youth`
       );
       const data = res.data.data.data;
       setImages(data.map((item: any) => item.imageUrl));
