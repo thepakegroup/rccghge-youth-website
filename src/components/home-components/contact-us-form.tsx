@@ -24,7 +24,7 @@ export const ContactUsForm = () => {
   const sendContactInfo = async (data: any) => {
     setSending(true);
     try {
-      const res = await api.post("/user/contact-us", data);
+      const res = await api.post("/user/contact-us?ctx=rccghge-youth", data);
       if (res.statusText === "OK") {
         SuccessModal(res.data?.message);
         reset();
