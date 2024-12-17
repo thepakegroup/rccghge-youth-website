@@ -66,6 +66,6 @@ html {
   @apply max-w-screen-2xl mx-auto px-2 480:px-4 576:px-6 sm:px-8 md:px-12 887:px-16 lg:px-20 xl:px-24;
 }
 
-ul {
+.programs-content ul {
   list-style: inherit;
 }

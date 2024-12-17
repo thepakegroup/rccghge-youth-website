@@ -89,12 +89,12 @@ const Galleria = () => {
               viewport={{ once: true, margin: "0px 0px -200px 0px" }}
               to={`/galleria/${item?.id}`}
               key={item?.id}
-              className="event-gallery-card w-full 376:w-[350px] 476:w-full mx-auto 476:mx-0 cursor-pointer overflow-hidden relative bg-dark-100/40 backdrop-blur-sm rounded-md"
+              className="event-gallery-card h-[300px] w-full 376:w-[350px] 476:w-full mx-auto 476:mx-0 cursor-pointer overflow-hidden relative bg-dark-100/40 backdrop-blur-sm rounded-md"
             >
               <img
                 className="w-full h-full object-cover"
                 src={item?.folderBanner}
-                alt=""
+                alt="gallery item"
               />
               <div className="absolute top-0 right-0 left-0 bottom-0 bg-dark-100/35" />
               <div className="w-[90%] mx-auto flex items-center justify-between gap-2 absolute left-1/2 -translate-x-1/2 bottom-4">
