@@ -11,7 +11,12 @@ import "swiper/css/navigation";
 import { Fragment } from "react";
 import { MoveLeft, MoveRight } from "lucide-react";
 
-export const OurGallery = () => {
+interface galleryProp {
+  id: number;
+  itemUrl: string;
+}
+
+export const OurGallery = ({ galleries }: { galleries: galleryProp[] }) => {
   return (
     <div className="side-space mb-12">
       <TopIntro text="Our Gallery" />
@@ -54,14 +59,14 @@ export const OurGallery = () => {
           }}
           className="mySwiper w-[99%] mx-auto"
         >
-          {imgArr?.map((item: any, index: number) => {
+          {galleries?.map((item: galleryProp, index: number) => {
             return (
               <SwiperSlide key={index}>
                 <div className="w-full h-[340px]">
                   <img
                     className="w-full h-full object-cover"
-                    src={item?.item_url}
-                    alt={item?.item_url}
+                    src={item?.itemUrl}
+                    alt={item?.itemUrl}
                     width={300}
                     height={300}
                   />
@@ -78,30 +83,3 @@ export const OurGallery = () => {
     </div>
   );
 };
-
-const imgArr = [
-  {
-    item_url: "/gallery1.png",
-  },
-  {
-    item_url: "/gallery2.png",
-  },
-  {
-    item_url: "/gallery3.png",
-  },
-  {
-    item_url: "/gallery2.png",
-  },
-  {
-    item_url: "/gallery1.png",
-  },
-  {
-    item_url: "/gallery2.png",
-  },
-  {
-    item_url: "/gallery3.png",
-  },
-  {
-    item_url: "/gallery2.png",
-  },
-];

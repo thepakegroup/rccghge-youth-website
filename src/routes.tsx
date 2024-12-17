@@ -15,6 +15,7 @@ import SignUpPage from "./pages/sign-up";
 import SignInPage from "./pages/sign-in";
 import GalleriaDetails from "./pages/galleria-details";
 import EventDetails from "./pages/event-details";
+import { getYoungAdultsContent } from "./utils/services";
 
 export const routes = createBrowserRouter(
   createRoutesFromElements(
@@ -26,7 +27,7 @@ export const routes = createBrowserRouter(
       </Route>
       {/* SITE LAYOUT */}
       <Route element={<SiteLayout />}>
-        <Route index element={<Home />} />
+        <Route index element={<Home />} loader={getYoungAdultsContent} />
         <Route path="/galleria" element={<Galleria />} />
         <Route path="/galleria/:id" element={<GalleriaDetails />} />
         <Route path="/our-leaders" element={<OurLeaders />} />
