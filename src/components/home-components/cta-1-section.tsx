@@ -14,7 +14,7 @@ export const Cta1Section = ({ content }: { content: contentType }) => {
           viewport={{ once: true, margin: "0px 0px -100px 0px" }}
           className="font-semibold text-lg 376:text-xl sm:text-2xl md:text-3xl font-playfair-display text-center"
         >
-          {content?.subheading_text}
+          {content && content?.subheading_text}
         </Mh2>
         <Mp
           initial={{ opacity: 0, y: 18 }}
@@ -22,7 +22,7 @@ export const Cta1Section = ({ content }: { content: contentType }) => {
           viewport={{ once: true, margin: "0px 0px -100px 0px" }}
           className="font-quicksand text-base sm:text-lg text-dark-100/75 text-center font-medium"
         >
-          {content?.subheading_description}
+          {content && content?.subheading_description}
         </Mp>
       </div>
       <LogoLine className="mb-14 w-[90%] mx-auto h-[2px]" />

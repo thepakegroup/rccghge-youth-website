@@ -19,7 +19,7 @@ const Home = () => {
   //
   return (
     <Fragment>
-      <HeroSection heroImages={sliders} />
+      <HeroSection contexts={settings?.settings} heroImages={sliders} />
       <Cta1Section content={settings?.settings} />
       <ImpactSection items={settings?.settings?.subsection} />
       <OurProgrammsSection programs={programs} />

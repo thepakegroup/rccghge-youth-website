@@ -49,25 +49,26 @@ export const ImpactSection = ({ items }: { items: ItemsProp }) => {
       </div>
       {/*  */}
       <div className="flex flex-col gap-5">
-        {impacts?.map((item: impactsProp) => (
-          <Mdiv
-            key={item?.id}
-            initial={"hidden"}
-            whileInView={"visible"}
-            custom={item?.id}
-            variants={var1}
-            viewport={{ once: true, margin: "0px 0px -100px 0px" }}
-            className="p-5 border rounded-md flex flex-col gap-2"
-          >
-            <h3 className="text-primary-100 font-playfair-display font-semibold text-lg 480:text-xl sm:text-2xl">
-              {item?.title}
-            </h3>
-            <p
-              className="text-sm 576:text-base font-normal text-dark-100/75"
-              dangerouslySetInnerHTML={{ __html: item?.content }}
-            />
-          </Mdiv>
-        ))}
+        {items &&
+          impacts?.map((item: impactsProp) => (
+            <Mdiv
+              key={item?.id}
+              initial={"hidden"}
+              whileInView={"visible"}
+              custom={item?.id}
+              variants={var1}
+              viewport={{ once: true, margin: "0px 0px -100px 0px" }}
+              className="p-5 border rounded-md flex flex-col gap-2"
+            >
+              <h3 className="text-primary-100 font-playfair-display font-semibold text-lg 480:text-xl sm:text-2xl">
+                {item?.title}
+              </h3>
+              <p
+                className="text-sm 576:text-base font-normal text-dark-100/75"
+                dangerouslySetInnerHTML={{ __html: item?.content }}
+              />
+            </Mdiv>
+          ))}
       </div>
     </div>
   );

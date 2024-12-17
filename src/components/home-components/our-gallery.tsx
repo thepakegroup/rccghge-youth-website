@@ -59,21 +59,22 @@ export const OurGallery = ({ galleries }: { galleries: galleryProp[] }) => {
           }}
           className="mySwiper w-[99%] mx-auto"
         >
-          {galleries?.map((item: galleryProp, index: number) => {
-            return (
-              <SwiperSlide key={index}>
-                <div className="w-full h-[340px]">
-                  <img
-                    className="w-full h-full object-cover"
-                    src={item?.itemUrl}
-                    alt={item?.itemUrl}
-                    width={300}
-                    height={300}
-                  />
-                </div>
-              </SwiperSlide>
-            );
-          })}
+          {galleries &&
+            galleries?.map((item: galleryProp, index: number) => {
+              return (
+                <SwiperSlide key={index}>
+                  <div className="w-full h-[340px]">
+                    <img
+                      className="w-full h-full object-cover"
+                      src={item?.itemUrl}
+                      alt={item?.itemUrl}
+                      width={300}
+                      height={300}
+                    />
+                  </div>
+                </SwiperSlide>
+              );
+            })}
         </Swiper>
         <div className="w-[99%] mx-auto flex justify-between items-center !mt-5">
           <MoveLeft className="go_prev_two cursor-pointer text-white bg-[#FF8412] rounded-full p-1 size-10" />
