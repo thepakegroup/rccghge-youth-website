@@ -19,7 +19,13 @@ interface slidesImages {
 }
 // register plugins
 gsap.registerPlugin(ScrollTrigger);
-export const HeroSection = ({ heroImages }: { heroImages: slidesImages[] }) => {
+export const HeroSection = ({
+  heroImages,
+  contexts,
+}: {
+  heroImages: slidesImages[];
+  contexts: { heading_text: string; heading_description: string };
+}) => {
   useEffect(() => {
     gsap.fromTo(
       ".hero-main-content",
@@ -71,10 +77,10 @@ export const HeroSection = ({ heroImages }: { heroImages: slidesImages[] }) => {
       </Swiper>
       <div className="hero-main-content absolute w-full z-[888] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center gap-2 text-center">
         <h1 className="header-one select-none !w-[98%] md:!w-[90%] lg:!w-[60%] mx-auto">
-          Young Adults Ministry
+          {contexts && contexts?.heading_text}
         </h1>
         <p className="text-sm select-none 376:text-base sm:text-lg text-white">
-          “For Children are the heritage of the lord...”
+          {contexts && contexts?.heading_description}
         </p>
       </div>
     </div>
