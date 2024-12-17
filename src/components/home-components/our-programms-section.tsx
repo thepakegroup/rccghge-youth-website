@@ -22,7 +22,6 @@ export const OurProgrammsSection = ({
         {programs &&
           programs?.map((program: programProp, index: number) => {
             const isEven = index % 2 ? true : false;
-            console.log(isEven);
             return (
               <div
                 className="grid grid-cols-1 lg:grid-cols-2 gap-x-10 gap-y-10 md:gap-x-12 mb-16"

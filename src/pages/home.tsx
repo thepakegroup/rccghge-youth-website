@@ -15,7 +15,6 @@ const Home = () => {
   const data = pageData?.data;
   const { gallery, programs, settings, teams, sliders } = data;
   //
-  console.log(pageData);
   //
   return (
     <Fragment>
