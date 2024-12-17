@@ -9,15 +9,17 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Fragment } from "react";
 import { MoveLeft, MoveRight } from "lucide-react";
-import { getYoungAdultsContent } from "@/utils/services";
-import { useQuery } from "@tanstack/react-query";
 
-export const OurTeamSection = () => {
-  const { data } = useQuery({
-    queryKey: ["youngAdultContent"],
-    queryFn: async () => await getYoungAdultsContent(),
-  });
-  const teamImages = data && data?.gallery;
+interface teamProp {
+  createdAt: string;
+  id: number;
+  imageUrl: string;
+  name: string;
+  office: string;
+  updatedAt: string;
+}
+
+export const OurTeamSection = ({ teams }: { teams: teamProp[] }) => {
   return (
     <div className="side-space">
       <TopIntro text="Our Great Team" />
@@ -45,12 +47,12 @@ export const OurTeamSection = () => {
           }}
           className="mySwiper w-[99%] mx-auto"
         >
-          {teamImages?.map((team: any) => {
+          {teams?.map((team: teamProp) => {
             return (
               <SwiperSlide key={team?.id}>
                 <div className="w-full h-[340px]">
                   <img
-                    src={team?.item_url}
+                    src={team?.imageUrl}
                     alt={team?.name}
                     width={300}
                     height={300}

@@ -1,16 +1,10 @@
-import { BaseUrl2 } from "./global-vars";
+import api from "./axios-interceptor";
 
 export const getYoungAdultsContent = async () => {
   try {
-    const res = await fetch(`${BaseUrl2}/ministry-page/youth-page`);
-    const ministryData = await res.json().then((res) => res.data);
-
-    if (!res.ok) {
-      console.error("Something went wrong", ministryData);
-      return;
-    }
-    return ministryData;
+    const res = await api.get("/ministry-page/youth-page");
+    return res.data;
   } catch (error) {
-    console.error(error);
+    return error;
   }
 };

@@ -11,10 +11,15 @@ import { HeroRightArrow } from "@/icons/hero-right-arrow";
 import { useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
+//
+interface slidesImages {
+  id: number;
+  itemUrl: string;
+  itemGroup: string;
+}
 // register plugins
 gsap.registerPlugin(ScrollTrigger);
-export const HeroSection = () => {
+export const HeroSection = ({ heroImages }: { heroImages: slidesImages[] }) => {
   useEffect(() => {
     gsap.fromTo(
       ".hero-main-content",
@@ -45,33 +50,21 @@ export const HeroSection = () => {
         modules={[Autoplay, Pagination, Navigation]}
         className="relative mySwiper1 h-[80vh]"
       >
-        <SwiperSlide>
-          <div className={`relative w-full h-full bg-light-200`}>
-            <div
-              className="absolute top-0 left-0 right-0 bottom-0 
+        {heroImages?.map((image) => (
+          <SwiperSlide key={image?.id}>
+            <div className={`relative w-full h-full bg-light-200`}>
+              <div
+                className="absolute top-0 left-0 right-0 bottom-0 
             bg-[linear-gradient(rgba(0,0,0,0.46),rgba(0,0,0,0.46))]"
-            />
-            <img
-              className="h-full w-full object-cover"
-              src={"/youth-website-hero-img.png"}
-              alt="hero image"
-            />
-          </div>
-        </SwiperSlide>
-        {/*  */}
-        <SwiperSlide>
-          <div className={`relative w-full h-full bg-light-200`}>
-            <div
-              className="absolute top-0 left-0 right-0 bottom-0 
-            bg-[linear-gradient(rgba(0,0,0,0.46),rgba(0,0,0,0.46))]"
-            />
-            <img
-              className="h-full w-full object-cover"
-              src={"/contact-us-img-bg.png"}
-              alt="hero image"
-            />
-          </div>
-        </SwiperSlide>
+              />
+              <img
+                className="h-full w-full object-cover"
+                src={image?.itemUrl}
+                alt={image?.itemUrl}
+              />
+            </div>
+          </SwiperSlide>
+        ))}
 
         <HeroRightArrow />
       </Swiper>
