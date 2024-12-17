@@ -21,7 +21,10 @@ const JoinUs = () => {
   const sendJoinRequest = async (data: any) => {
     setRequesting(true);
     try {
-      const res = await api.post("/user/join-form?ctx=rccghge-youth", data);
+      const res = await api.post("/user/join-form", {
+        ...data,
+        ctx: "rccghge-youth",
+      });
       if (res.statusText === "OK") {
         SuccessModal(res.data?.message);
         reset();
