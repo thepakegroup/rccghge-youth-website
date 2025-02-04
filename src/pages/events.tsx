@@ -152,7 +152,7 @@ const Events = () => {
         </div>
       </div>
       {/* grid columns of th events */}
-      <div className="side-space mt-10 grid grid-cols-1 576:grid-cols-2 887:grid-cols-3 justify-items-center  gap-6 mb-12">
+      <div className="side-space mt-10 grid grid-cols-1 576:grid-cols-2 997:grid-cols-3 justify-items-center  gap-6 mb-12">
         {loadingEvents &&
           [...Array(6)].map((item: any): any => {
             return (
@@ -172,6 +172,11 @@ const Events = () => {
               </div>
             );
           })}
+        {events && filteredData?.length < 1 && (
+          <p className="font-semibold text-gray-600 text-lg sm:text-xl col-span-6">
+            No events available
+          </p>
+        )}
         {events &&
           filteredData?.map((item: any, index: number) => {
             const date = new Date(item?.eventDate);
@@ -189,9 +194,9 @@ const Events = () => {
                 viewport={{ once: true, margin: "0px 0px -200px 0px" }}
                 to={`/events/${item?.id}`}
                 key={index}
-                className="w-full 376:w-[300px] 576:w-full flex flex-col gap-1"
+                className="w-full 376:w-[350px] 576:w-full flex flex-col gap-1"
               >
-                <div className="w-full h-full">
+                <div className="w-full min-h-[240px] h-full">
                   <img
                     className="w-full h-full bg-light-200 object-cover"
                     src={img}
