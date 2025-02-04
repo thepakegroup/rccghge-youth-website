@@ -28,7 +28,7 @@ export const Cta2Section = () => {
   const var1 = {
     hidden: {
       opacity: 0,
-      x: 20,
+      x: -20,
     },
     visible: (index: number) => ({
       opacity: 1,
@@ -60,12 +60,12 @@ export const Cta2Section = () => {
               />
             ))}
           {resources &&
-            resources?.map((resource: itemProp) => (
+            resources?.map((resource: itemProp, index: number) => (
               <Mdiv
                 initial="hidden"
                 whileInView="visible"
                 variants={var1}
-                custom={resource?.id}
+                custom={index}
                 viewport={{ once: true, margin: "0px 0px -100px 0px" }}
                 key={resource?.id}
                 className="flex bg-white flex-col"

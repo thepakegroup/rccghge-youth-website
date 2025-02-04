@@ -30,7 +30,11 @@ export const routes = createBrowserRouter(
         <Route index element={<Home />} loader={getYoungAdultsContent} />
         <Route path="/galleria" element={<Galleria />} />
         <Route path="/galleria/:id" element={<GalleriaDetails />} />
-        <Route path="/our-leaders" element={<OurLeaders />} />
+        <Route
+          path="/our-leaders"
+          element={<OurLeaders />}
+          loader={getYoungAdultsContent}
+        />
         <Route path="/events" element={<Events />} />
         <Route path="/events/:id" element={<EventDetails />} />
         <Route path="/join-us" element={<JoinUs />} />
