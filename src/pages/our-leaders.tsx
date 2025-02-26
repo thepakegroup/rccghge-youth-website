@@ -7,7 +7,6 @@ import { MailIcon } from "@/icons";
 import { Instagram } from "@/icons/instagram";
 import { Twitter } from "@/icons/twitter";
 import api from "@/utils/axios-interceptor";
-import { Truncate } from "@/utils/truncate";
 import { useQuery } from "@tanstack/react-query";
 import { v4 as uuidv4 } from "uuid";
 
@@ -89,13 +88,13 @@ const OurLeaders = () => {
                 <div className="flex flex-col gap-2">
                   <div className="h-[5px] w-[76px] bg-primary-100" />
                   <div className="text-[16px] 576:text-[19px] font-playfair-display font-bold">
-                    <span>{item?.name}</span>
+                    <span className="capitalize">{item?.name}</span>
                     <span className="text-base text-grey-100">
-                      &nbsp;/&nbsp;{Truncate(item?.position, 15)}
+                      &nbsp;/&nbsp;{item?.position}
                     </span>
                   </div>
                   <p className="text-sm 576:text-base font-normal font-quicksand text-dark-100/80">
-                    {Truncate(item?.description, 18)}
+                    {item?.description}
                   </p>
                   <div className="flex items-center gap-3">
                     {item?.socialLinks?.x && (
