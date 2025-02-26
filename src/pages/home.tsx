@@ -6,6 +6,8 @@ import { ImpactSection } from "@/components/home-components/impact-section";
 import { OurGallery } from "@/components/home-components/our-gallery";
 import { OurProgrammsSection } from "@/components/home-components/our-programms-section";
 import { OurTeamSection } from "@/components/home-components/our-team-section";
+import api from "@/utils/axios-interceptor";
+import { useQuery } from "@tanstack/react-query";
 import { useLoaderData } from "react-router-dom";
 import { Fragment } from "react/jsx-runtime";
 
@@ -13,8 +15,17 @@ const Home = () => {
   //
   const pageData = useLoaderData();
   const data = pageData?.data;
-  const { gallery, programs, settings, teams, sliders } = data;
+  // const { gallery, programs, settings, teams, sliders } = data;
+  const { gallery, programs, settings, sliders } = data;
   //
+  const { data: leaders } = useQuery({
+    queryKey: ["leaders"],
+    queryFn: async () => {
+      const res = await api.get("/leader/all?ctx=rccghge-youth");
+      return res.data.data;
+    },
+    select: (data) => data,
+  });
   //
   return (
     <Fragment>
@@ -24,7 +35,7 @@ const Home = () => {
       <OurProgrammsSection programs={programs} />
       <OurGallery galleries={gallery} />
       <Cta2Section />
-      <OurTeamSection teams={teams} />
+      {leaders && <OurTeamSection teams={leaders?.data} />}
       <ContactUsForm />
     </Fragment>
   );

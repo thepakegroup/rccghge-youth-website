@@ -8,7 +8,6 @@ import { SmallChevronDown } from "@/icons/small-chevron-down";
 import api from "@/utils/axios-interceptor";
 import { Truncate } from "@/utils/truncate";
 import { useQuery } from "@tanstack/react-query";
-import { formatDate } from "date-fns";
 import { useMemo, useState } from "react";
 import ReactPaginate from "react-paginate";
 import { useNavigate, useSearchParams } from "react-router-dom";
@@ -38,6 +37,28 @@ const Events = () => {
     staleTime: 2500,
   });
   //
+  const parseEventTime = (dateStr: string, timeStr: string) => {
+    if (!dateStr || !timeStr) return null;
+
+    const [year, month, day] = dateStr.split("-").map(Number);
+    const [hours, minutes, seconds] = timeStr.split(":").map(Number);
+
+    return new Date(
+      Date.UTC(year, month - 1, day, hours, minutes, seconds || 0)
+    );
+  };
+  //
+  const formatTo12Hour = (timeStr: string) => {
+    const parts = timeStr.split(":").map(Number);
+    const hours = parts[0];
+    const minutes = parts[1];
+
+    const period = hours >= 12 ? "PM" : "AM";
+    const formattedHours = hours % 12 || 12;
+
+    return `${formattedHours}:${minutes.toString().padStart(2, "0")} ${period}`;
+  };
+  //
   const handlePageClick = (data: any) => {
     const { selected } = data;
     const params = new URLSearchParams(searchParams);
@@ -46,6 +67,7 @@ const Events = () => {
   };
   //search functionality
   const filteredData = useMemo(() => {
+    const now = new Date();
     if (searchInput) {
       return events?.data?.filter((event: any) =>
         event?.title?.toLowerCase().includes(searchInput)
@@ -55,11 +77,23 @@ const Events = () => {
       return events?.data;
     } else if (filter === "Recent") {
       return events?.data?.filter((event: any) => {
-        return new Date(event?.eventDate) > new Date();
+        const start = parseEventTime(
+          event.startDate?.split("T")[0],
+          event.startTime
+        );
+        const end = parseEventTime(event.endDate?.split("T")[0], event.endTime);
+
+        if (!start || !end) return false;
+
+        return start > now || (start <= now && end >= now);
       });
     } else if (filter === "Previous") {
       return events?.data?.filter((event: any) => {
-        return new Date(event?.eventDate) < new Date();
+        const end = parseEventTime(event.endDate?.split("T")[0], event.endTime);
+
+        if (!end) return false;
+
+        return end < now;
       });
     }
     return events?.data;
@@ -196,7 +230,7 @@ const Events = () => {
                 key={index}
                 className="w-full 376:w-[350px] 576:w-full flex flex-col gap-1"
               >
-                <div className="w-full min-h-[240px] h-full">
+                <div className="w-full min-h-[240px] max-h-[250px]">
                   <img
                     className="w-full h-full bg-light-200 object-cover"
                     src={img}
@@ -216,12 +250,11 @@ const Events = () => {
                   <div>
                     <h3 className="tracking-wide">
                       <span>
-                        {formatDate(item?.eventDate, "hh:mm a")}
-                        &nbsp;/&nbsp;
+                        {formatTo12Hour(item?.startTime)} -{" "}
+                        {formatTo12Hour(item?.endTime)}
+                        &nbsp;{item?.location ? "/" : ""}&nbsp;
                       </span>
-                      <span className="text-grey-100 line-through">
-                        Church Aud.
-                      </span>
+                      <span className="text-gray-500">{item?.location}</span>
                     </h3>
                     <h4 className="font-semibold">
                       {Truncate(item?.title, 35)}
