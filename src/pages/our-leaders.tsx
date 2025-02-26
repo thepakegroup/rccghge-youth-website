@@ -1,17 +1,25 @@
+import {
+  IconHolder,
+  IconHolder2,
+} from "@/components/base-components/icon-holder";
 import { Mdiv } from "@/components/framer-motions/motion-exports";
-import { useLoaderData } from "react-router-dom";
+import { MailIcon } from "@/icons";
+import { Instagram } from "@/icons/instagram";
+import { Twitter } from "@/icons/twitter";
+import api from "@/utils/axios-interceptor";
+import { Truncate } from "@/utils/truncate";
+import { useQuery } from "@tanstack/react-query";
+import { v4 as uuidv4 } from "uuid";
+
 const OurLeaders = () => {
-  // const { data: leaders, isLoading: loadingLeaders } = useQuery({
-  //   queryKey: ["leaders"],
-  //   queryFn: async () => {
-  //     const res = await api.get("/leader/all?ctx=rccghge-youth");
-  //     return res.data.data;
-  //   },
-  //   select: (data) => data,
-  // });
-  const pageData = useLoaderData();
-  const data = pageData?.data;
-  const { teams } = data;
+  const { data: leaders, isLoading: loadingLeaders } = useQuery({
+    queryKey: ["leaders"],
+    queryFn: async () => {
+      const res = await api.get("/leader/all?ctx=rccghge-youth");
+      return res.data.data;
+    },
+    select: (data) => data,
+  });
   //
   const var1 = {
     hidden: {
@@ -38,8 +46,27 @@ const OurLeaders = () => {
       </div>
       {/*  */}
       <div className="side-space grid grid-cols-1 480:grid-cols-2 887:grid-cols-3 justify-items-center gap-8 my-20">
-        {teams &&
-          teams?.map((team: any, index: number) => {
+        {loadingLeaders &&
+          [...Array(6)].map((item: any): any => {
+            return (
+              <div
+                key={String(uuidv4() + item)}
+                className="w-full flex flex-col gap-3 h-72 bg-light-100"
+              >
+                <div className="h-[80%] bg-light-200 animate-pulse rounded-md" />
+                <div className="h-[18px] w-[90%] bg-light-200 animate-pulse rounded-md" />
+                <div className="h-[15px] w-[80%] bg-light-200 animate-pulse rounded-md" />
+                <div className="h-[15px] w-[80%] bg-light-200 animate-pulse rounded-md" />
+                <div className="flex items-center gap-4 self-end">
+                  <div className="h-[15px] w-[80px] bg-light-200 animate-pulse rounded-md" />
+                  <div className="h-[15px] w-[80px] bg-light-200 animate-pulse rounded-md" />
+                </div>
+                <div className="h-[18px] w-[80%] bg-light-200 animate-pulse rounded-md" />
+              </div>
+            );
+          })}
+        {leaders &&
+          leaders?.data?.map((item: any, index: number) => {
             return (
               <Mdiv
                 initial="hidden"
@@ -47,24 +74,46 @@ const OurLeaders = () => {
                 custom={index}
                 variants={var1}
                 viewport={{ once: true, margin: "0px 0px -200px 0px" }}
-                key={team?.id}
+                key={item?.id}
                 className="flex 376:w-[350px] mx-auto 480:w-fit flex-col gap-3"
               >
                 <div className="w-full h-[340px]">
                   <img
-                    src={team?.imageUrl}
-                    alt={team?.name}
+                    src={item?.image}
+                    alt={item?.name}
                     width={300}
                     height={300}
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="flex flex-col gap-1 mt-2">
-                  <div className="line bg-primary w-16 h-1" />
-                  <h3 className="font-semibold font-playfair text-lg md:text-xl">
-                    {team?.name}
-                  </h3>
-                  <p className="text-sm">{team?.office}</p>
+                <div className="flex flex-col gap-2">
+                  <div className="h-[5px] w-[76px] bg-primary-100" />
+                  <div className="text-[16px] 576:text-[19px] font-playfair-display font-bold">
+                    <span>{item?.name}</span>
+                    <span className="text-base text-grey-100">
+                      &nbsp;/&nbsp;{Truncate(item?.position, 15)}
+                    </span>
+                  </div>
+                  <p className="text-sm 576:text-base font-normal font-quicksand text-dark-100/80">
+                    {Truncate(item?.description, 18)}
+                  </p>
+                  <div className="flex items-center gap-3">
+                    {item?.socialLinks?.x && (
+                      <IconHolder href={item?.socialLinks?.x}>
+                        <Twitter />
+                      </IconHolder>
+                    )}
+                    {item?.socialLinks?.instagram && (
+                      <IconHolder href={item?.socialLinks?.instagram}>
+                        <Instagram />
+                      </IconHolder>
+                    )}
+                    {item?.socialLinks?.email && (
+                      <IconHolder2 href={item?.socialLinks?.email}>
+                        <MailIcon />
+                      </IconHolder2>
+                    )}
+                  </div>
                 </div>
               </Mdiv>
             );

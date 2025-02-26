@@ -15,6 +15,16 @@ const EventDetails = () => {
     staleTime: 2500,
   });
   //
+  const formatTo12Hour = (timeStr: string) => {
+    const parts = timeStr.split(":").map(Number);
+    const hours = parts[0];
+    const minutes = parts[1];
+
+    const period = hours >= 12 ? "PM" : "AM";
+    const formattedHours = hours % 12 || 12;
+
+    return `${formattedHours}:${minutes.toString().padStart(2, "0")} ${period}`;
+  };
   //
   return (
     <div className="w-[95%] mx-auto mt-8 mb-8">
@@ -48,12 +58,19 @@ const EventDetails = () => {
           />
           <div className="flex flex-col gap-3">
             <h1 className="header-two !text-dark-100">{event?.title}</h1>
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2">
               <p className="font-semibold text-dark-100/80">
-                {format(new Date(event?.eventDate), "MMM do, yyyy")}
+                {format(new Date(event?.startDate), "MMM do, yyyy")}
               </p>
               <p className="font-semibold text-blue-200">
-                {format(new Date(event?.eventDate), "h:mm a")}
+                {formatTo12Hour(event?.startTime)}
+              </p>
+              <span>-</span>
+              <p className="font-semibold text-dark-100/80">
+                {format(new Date(event?.endDate), "MMM do, yyyy")}
+              </p>
+              <p className="font-semibold text-blue-200">
+                {formatTo12Hour(event?.endTime)}
               </p>
             </div>
             <div dangerouslySetInnerHTML={{ __html: event?.description }} />

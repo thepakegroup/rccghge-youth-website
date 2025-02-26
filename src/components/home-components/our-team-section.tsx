@@ -20,9 +20,11 @@ interface teamProp {
 }
 
 export const OurTeamSection = ({ teams }: { teams: teamProp[] }) => {
+  //
   return (
     <div className="side-space">
-      <TopIntro text="Our Great Team" />
+      {/* <TopIntro text="Our Great Team" /> */}
+      <TopIntro text="Our Leaders" />
       <Fragment>
         <Swiper
           slidesPerView={3}
@@ -47,12 +49,14 @@ export const OurTeamSection = ({ teams }: { teams: teamProp[] }) => {
           }}
           className="mySwiper w-[99%] mx-auto"
         >
-          {teams?.map((team: teamProp) => {
+          {/* {teams?.map((team: teamProp) => { */}
+          {teams?.map((team: any) => {
             return (
               <SwiperSlide key={team?.id}>
                 <div className="w-full h-[340px]">
                   <img
-                    src={team?.imageUrl}
+                    // src={team?.imageUrl}
+                    src={team?.image}
                     alt={team?.name}
                     width={300}
                     height={300}
@@ -64,7 +68,7 @@ export const OurTeamSection = ({ teams }: { teams: teamProp[] }) => {
                   <h3 className="font-semibold font-playfair text-lg md:text-xl">
                     {team?.name}
                   </h3>
-                  <p className="text-sm">{team?.office}</p>
+                  <p className="text-sm">{team?.position}</p>
                 </div>
               </SwiperSlide>
             );
