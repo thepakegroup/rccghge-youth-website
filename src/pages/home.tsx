@@ -33,7 +33,7 @@ const Home = () => {
       <Cta1Section content={settings?.settings} />
       <ImpactSection items={settings?.settings?.subsection} />
       <OurProgrammsSection programs={programs} />
-      <OurGallery galleries={gallery} />
+      {gallery && <OurGallery galleries={gallery} />}
       <Cta2Section />
       {leaders && <OurTeamSection teams={leaders?.data} />}
       <ContactUsForm />
