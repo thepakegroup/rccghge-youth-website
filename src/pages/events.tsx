@@ -176,7 +176,7 @@ const Events = () => {
         <div className="w-[250px] flex justify-between items-center gap-1 border px-2">
           <SearchIcon />
           <input
-            className="outline-none w-full py-2 pl-2 text-sm"
+            className="outline-none w-full py-[10px] pl-2 text-sm"
             type="text"
             placeholder="Search"
             onChange={(e) =>
